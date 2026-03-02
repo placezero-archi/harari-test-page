@@ -144,6 +144,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
             display: block;
+            position: relative;
         }
         
         .post-card:hover {
@@ -187,6 +188,43 @@
             font-size: 0.85em;
             margin-top: 10px;
             text-align: left;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 8px 15px;
+            color: #ffd700;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .copy-button:active {
+            transform: scale(0.95);
+        }
+        
+        .copy-button.copied {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+            color: #4CAF50;
         }
         
         .blog-button {
@@ -301,7 +339,11 @@
             <div class="recent-posts">
                 <h2 class="section-title">✨ 최근 업데이트</h2>
                 <div class="posts-grid">
-                    <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank">
+                    <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200723420">
+                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200723420')">
+                            <span class="copy-icon">📋</span>
+                            <span class="copy-text">URL 복사</span>
+                        </button>
                         <div class="post-thumbnail">🐟</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물고기자리 월간 별자리운세 (데칸별)</h3>
@@ -309,7 +351,11 @@
                         </div>
                     </a>
                     
-                    <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank">
+                    <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200645209">
+                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200645209')">
+                            <span class="copy-icon">📋</span>
+                            <span class="copy-text">URL 복사</span>
+                        </button>
                         <div class="post-thumbnail">🏺</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물병자리 월간 별자리운세 (데칸별)</h3>
@@ -317,7 +363,11 @@
                         </div>
                     </a>
                     
-                    <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank">
+                    <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200632371">
+                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200632371')">
+                            <span class="copy-icon">📋</span>
+                            <span class="copy-text">URL 복사</span>
+                        </button>
                         <div class="post-thumbnail">🐐</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 염소자리 월간 별자리운세 (데칸별)</h3>
@@ -348,6 +398,36 @@
             star.style.animationDelay = Math.random() * 3 + 's';
             star.style.animationDuration = (Math.random() * 2 + 2) + 's';
             starsContainer.appendChild(star);
+        }
+        
+        // URL 복사 기능
+        async function copyURL(event, url) {
+            event.preventDefault(); // 링크 클릭 방지
+            event.stopPropagation(); // 이벤트 전파 중지
+            
+            const button = event.currentTarget;
+            const textElement = button.querySelector('.copy-text');
+            const originalText = textElement.textContent;
+            
+            try {
+                await navigator.clipboard.writeText(url);
+                
+                // 복사 성공 피드백
+                button.classList.add('copied');
+                textElement.textContent = '복사완료!';
+                
+                // 2초 후 원래 상태로 복구
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    textElement.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('URL 복사 실패:', err);
+                textElement.textContent = '복사 실패';
+                setTimeout(() => {
+                    textElement.textContent = originalText;
+                }, 2000);
+            }
         }
     </script>
 </body>
