@@ -159,8 +159,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3em;
+            font-size: 5em;
             border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            animation: float-slow 4s ease-in-out infinite;
+        }
+        
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .post-content {
@@ -277,18 +283,18 @@
             <p class="subtitle">당신의 오늘을 밝혀줄 별빛</p>
             
             <div class="zodiac-symbols">
-                <span class="zodiac-symbol">♈</span>
-                <span class="zodiac-symbol">♉</span>
-                <span class="zodiac-symbol">♊</span>
-                <span class="zodiac-symbol">♋</span>
-                <span class="zodiac-symbol">♌</span>
-                <span class="zodiac-symbol">♍</span>
-                <span class="zodiac-symbol">♎</span>
-                <span class="zodiac-symbol">♏</span>
-                <span class="zodiac-symbol">♐</span>
-                <span class="zodiac-symbol">♑</span>
-                <span class="zodiac-symbol">♒</span>
-                <span class="zodiac-symbol">♓</span>
+                <span class="zodiac-symbol" title="양자리">🐏</span>
+                <span class="zodiac-symbol" title="황소자리">🐂</span>
+                <span class="zodiac-symbol" title="쌍둥이자리">👯</span>
+                <span class="zodiac-symbol" title="게자리">🦀</span>
+                <span class="zodiac-symbol" title="사자자리">🦁</span>
+                <span class="zodiac-symbol" title="처녀자리">👧</span>
+                <span class="zodiac-symbol" title="천칭자리">⚖️</span>
+                <span class="zodiac-symbol" title="전갈자리">🦂</span>
+                <span class="zodiac-symbol" title="사수자리">🏹</span>
+                <span class="zodiac-symbol" title="염소자리">🐐</span>
+                <span class="zodiac-symbol" title="물병자리">🏺</span>
+                <span class="zodiac-symbol" title="물고기자리">🐟</span>
             </div>
             
             <!-- 최근 게시물 섹션 -->
@@ -296,7 +302,7 @@
                 <h2 class="section-title">✨ 최근 업데이트</h2>
                 <div class="posts-grid">
                     <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank">
-                        <div class="post-thumbnail">♓</div>
+                        <div class="post-thumbnail">🐟</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물고기자리 월간 별자리운세 (데칸별)</h3>
                             <p class="post-date">2026. 03. 02</p>
@@ -304,7 +310,7 @@
                     </a>
                     
                     <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank">
-                        <div class="post-thumbnail">♒</div>
+                        <div class="post-thumbnail">🏺</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물병자리 월간 별자리운세 (데칸별)</h3>
                             <p class="post-date">2026. 03. 01</p>
@@ -312,7 +318,7 @@
                     </a>
                     
                     <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank">
-                        <div class="post-thumbnail">♑</div>
+                        <div class="post-thumbnail">🐐</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 염소자리 월간 별자리운세 (데칸별)</h3>
                             <p class="post-date">2026. 03. 01</p>
