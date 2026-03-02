@@ -144,7 +144,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
             display: block;
-            position: relative;
         }
         
         .post-card:hover {
@@ -190,38 +189,34 @@
             text-align: left;
         }
         
-        .copy-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            padding: 8px 15px;
-            color: #ffd700;
-            font-size: 0.85em;
+        .page-copy-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.1em;
             font-weight: 600;
+            color: #ffd700;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
         }
         
-        .copy-button:hover {
-            background: rgba(255, 215, 0, 0.25);
+        .page-copy-button:hover {
+            background: rgba(255, 215, 0, 0.2);
             border-color: #ffd700;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
         }
         
-        .copy-button:active {
-            transform: scale(0.95);
+        .page-copy-button:active {
+            transform: translateY(-1px);
         }
         
-        .copy-button.copied {
+        .page-copy-button.copied {
             background: rgba(76, 175, 80, 0.3);
             border-color: #4CAF50;
             color: #4CAF50;
@@ -339,11 +334,7 @@
             <div class="recent-posts">
                 <h2 class="section-title">✨ 최근 업데이트</h2>
                 <div class="posts-grid">
-                    <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200723420">
-                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200723420')">
-                            <span class="copy-icon">📋</span>
-                            <span class="copy-text">URL 복사</span>
-                        </button>
+                    <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank">
                         <div class="post-thumbnail">🐟</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물고기자리 월간 별자리운세 (데칸별)</h3>
@@ -351,11 +342,7 @@
                         </div>
                     </a>
                     
-                    <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200645209">
-                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200645209')">
-                            <span class="copy-icon">📋</span>
-                            <span class="copy-text">URL 복사</span>
-                        </button>
+                    <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank">
                         <div class="post-thumbnail">🏺</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 물병자리 월간 별자리운세 (데칸별)</h3>
@@ -363,11 +350,7 @@
                         </div>
                     </a>
                     
-                    <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank" data-url="https://blog.naver.com/harari__brd/224200632371">
-                        <button class="copy-button" onclick="copyURL(event, 'https://blog.naver.com/harari__brd/224200632371')">
-                            <span class="copy-icon">📋</span>
-                            <span class="copy-text">URL 복사</span>
-                        </button>
+                    <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank">
                         <div class="post-thumbnail">🐐</div>
                         <div class="post-content">
                             <h3 class="post-title">2026년 03월 염소자리 월간 별자리운세 (데칸별)</h3>
@@ -380,6 +363,11 @@
             <a href="https://blog.naver.com/harari__brd" class="blog-button" target="_blank">
                 <span>운세 블로그 방문하기 🌸</span>
             </a>
+            
+            <button class="page-copy-button" onclick="copyPageURL()">
+                <span class="copy-icon">🔗</span>
+                <span class="copy-text">페이지 URL 복사</span>
+            </button>
             
             <p class="footer">🐦 매일 업데이트되는 별자리 운세를 만나보세요</p>
         </div>
@@ -400,17 +388,15 @@
             starsContainer.appendChild(star);
         }
         
-        // URL 복사 기능
-        async function copyURL(event, url) {
-            event.preventDefault(); // 링크 클릭 방지
-            event.stopPropagation(); // 이벤트 전파 중지
-            
+        // 페이지 URL 복사 기능
+        async function copyPageURL() {
             const button = event.currentTarget;
             const textElement = button.querySelector('.copy-text');
             const originalText = textElement.textContent;
+            const pageURL = 'https://harari-test-page.vercel.app/';
             
             try {
-                await navigator.clipboard.writeText(url);
+                await navigator.clipboard.writeText(pageURL);
                 
                 // 복사 성공 피드백
                 button.classList.add('copied');
