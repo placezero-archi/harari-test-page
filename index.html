@@ -190,30 +190,35 @@
         }
         
         .page-copy-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            font-size: 1.1em;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            padding: 10px 20px;
+            font-size: 0.9em;
             font-weight: 600;
             color: #ffd700;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 215, 0, 0.5);
-            border-radius: 50px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .page-copy-button:hover {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.25);
             border-color: #ffd700;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
         }
         
         .page-copy-button:active {
-            transform: translateY(-1px);
+            transform: translateY(0);
         }
         
         .page-copy-button.copied {
@@ -302,10 +307,23 @@
                 padding: 15px 40px;
                 font-size: 1.1em;
             }
+            
+            .page-copy-button {
+                top: 15px;
+                right: 15px;
+                padding: 8px 15px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 페이지 URL 복사 버튼 -->
+    <button class="page-copy-button" onclick="copyPageURL()">
+        <span class="copy-icon">🔗</span>
+        <span class="copy-text">URL 복사</span>
+    </button>
+    
     <!-- 별 생성 -->
     <div class="stars" id="stars"></div>
     
@@ -363,11 +381,6 @@
             <a href="https://blog.naver.com/harari__brd" class="blog-button" target="_blank">
                 <span>운세 블로그 방문하기 🌸</span>
             </a>
-            
-            <button class="page-copy-button" onclick="copyPageURL()">
-                <span class="copy-icon">🔗</span>
-                <span class="copy-text">페이지 URL 복사</span>
-            </button>
             
             <p class="footer">🐦 매일 업데이트되는 별자리 운세를 만나보세요</p>
         </div>
