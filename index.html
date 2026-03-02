@@ -63,7 +63,7 @@
             backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 60px 40px;
-            max-width: 600px;
+            max-width: 900px;
             width: 100%;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -100,7 +100,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
         }
         
@@ -114,6 +114,69 @@
         .zodiac-symbol:hover {
             opacity: 1;
             transform: scale(1.3);
+        }
+        
+        /* 최근 게시물 섹션 */
+        .recent-posts {
+            margin: 50px 0;
+            width: 100%;
+        }
+        
+        .section-title {
+            color: #ffd700;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .post-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            display: block;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+        
+        .post-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .post-content {
+            padding: 20px;
+        }
+        
+        .post-title {
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .post-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85em;
+            margin-top: 10px;
+            text-align: left;
         }
         
         .blog-button {
@@ -184,6 +247,14 @@
                 font-size: 1em;
             }
             
+            .section-title {
+                font-size: 1.5em;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .blog-button {
                 padding: 15px 40px;
                 font-size: 1.1em;
@@ -214,6 +285,36 @@
                 <span class="zodiac-symbol">♑</span>
                 <span class="zodiac-symbol">♒</span>
                 <span class="zodiac-symbol">♓</span>
+            </div>
+            
+            <!-- 최근 게시물 섹션 -->
+            <div class="recent-posts">
+                <h2 class="section-title">✨ 최근 업데이트</h2>
+                <div class="posts-grid">
+                    <a href="https://blog.naver.com/harari__brd/224200723420" class="post-card" target="_blank">
+                        <img src="https://blogthumb.pstatic.net/MjAyNjAzMDJfMTc1/MDAxNzcyMzc4MTQ5NzAx.nThG9X9E44YlF2LwnpClJP6xWFAaB4KpPVqRfKPZ2P0g.8CbQb2jZkAl76FU4VCC6zZ_Kd9z2bkb5DTi4NlX58vUg.JPEG/5F4C846E%A3%AD8E8A%A3%AD4B5E%A3%AD8390%A3%AD6DA54F8913E1.jpg?type=s3" alt="물고기자리 운세" class="post-thumbnail">
+                        <div class="post-content">
+                            <h3 class="post-title">2026년 03월 물고기자리 월간 별자리운세 (데칸별)</h3>
+                            <p class="post-date">2026. 03. 02</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://blog.naver.com/harari__brd/224200645209" class="post-card" target="_blank">
+                        <img src="https://blogthumb.pstatic.net/MjAyNjAzMDFfMTUx/MDAxNzcyMzc3MTkyMTU5.0DC2l8e-pRGuF2473goIsX5snH69NMM6AStEoDtFdpog.eWuRFqjcxfKex8hdIoDV6JuFKs7_zf2BapXEDi25qnAg.JPEG/6B85CEC1%A3%ADC8E6%A3%AD45E6%A3%AD8CC2%A3%AD4505D9EF1612.jpg?type=s3" alt="물병자리 운세" class="post-thumbnail">
+                        <div class="post-content">
+                            <h3 class="post-title">2026년 03월 물병자리 월간 별자리운세 (데칸별)</h3>
+                            <p class="post-date">2026. 03. 01</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://blog.naver.com/harari__brd/224200632371" class="post-card" target="_blank">
+                        <img src="https://blogthumb.pstatic.net/MjAyNjAzMDFfMTQw/MDAxNzcyMzc3MDI5MzQx.qH8Y6ToQp24iNfKVcsFTR3xlMC5zB0Mq0YEbKXcZ5p0g.ezujB5q79CiLFDPMv9OmibC311CjV1R3f6MGxfL3yesg.JPEG/F98CE621%A3%ADD8BD%A3%AD43B7%A3%AD9991%A3%AD31CABFF68C11.jpg?type=s3" alt="염소자리 운세" class="post-thumbnail">
+                        <div class="post-content">
+                            <h3 class="post-title">2026년 03월 염소자리 월간 별자리운세 (데칸별)</h3>
+                            <p class="post-date">2026. 03. 01</p>
+                        </div>
+                    </a>
+                </div>
             </div>
             
             <a href="https://blog.naver.com/harari__brd" class="blog-button" target="_blank">
